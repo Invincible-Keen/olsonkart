@@ -6,15 +6,27 @@ import '../node_modules/font-awesome/css/font-awesome.css'
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage'
 import registerServiceWorker from './registerServiceWorker';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch, HashRouter } from 'react-router-dom';
 
+
+//Brower history
+// ReactDOM.render((
+//   <BrowserRouter>
+//     <Switch>
+//     	<Route exact path="/" component={HomePage}/>
+//     	<Route exact path="/Login" component={LoginPage}/>
+//     </Switch>
+//   </BrowserRouter>
+// ), document.getElementById('root'));
+
+//Hash history
 ReactDOM.render((
-  <BrowserRouter>
-    <Switch>
+  <HashRouter>
+  	<Switch>
     	<Route exact path="/" component={HomePage}/>
-    	<Route exact path="/Login" component={LoginPage}/>
+    	<Route path="/Login" component={LoginPage}/>
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 ), document.getElementById('root'));
 
 // ReactDOM.render(<HomePage />, document.getElementById('root'));

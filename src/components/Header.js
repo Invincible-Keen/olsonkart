@@ -94,7 +94,7 @@ class Header extends Component{
 					</div>
 					<div className="">
 						<div className="kart-links">
-							<a onClick={this.handleLogout.bind(this)} href="/Login">{this.state.isLoggedIn? 'Logout': 'Login'} </a> 
+							<a onClick={this.handleLogout.bind(this)} href="#/Login">{this.state.isLoggedIn? 'Logout': 'Login'} </a> 
 							<a>Signup</a>
 							<a onClick={this.handleCartClick.bind(this)}><i className="fa fa-shopping-cart"></i> {this.props.prodQuantity} Items - ￥{this.props.totalPrice}</a>
 						</div>
