@@ -45,14 +45,14 @@ class Header extends Component{
 				<div className="container">
 					<div>
 					  <div className="logo">
-						 <h1><a href="/">OlsonKart</a></h1>
+						 <h1><a href="#/">OlsonKart</a></h1>
 					  </div>
 				    </div>
 					<div className="menu">
 						<div className="navi">
 							<div id="ddtopmenubar" className="mattblackmenu">
 								<ul>
-									<DropdownMenu name="Home" options={['Revolution Slider', 'Bootstrap Slider']} link="/" />
+									<DropdownMenu name="Home" options={['Revolution Slider', 'Bootstrap Slider']} link="#/" />
 									<DropdownMenu name="Account" options={['My Account', 'View Cart', 'Checkout', 'Wish List', 'Order History', 'Edit Profile', 'Confirmation']} />
 									<DropdownMenu name="Pages" options={['404', 'FAQ', 'Blog', 'Careers', 'Coming Soon', 'Support', 'About']}  />
 									<DropdownMenu name="Computers" options={['Desktop', 'Laptop', 'NetBook', 'All-In-One PC', 'Alienware']} />
