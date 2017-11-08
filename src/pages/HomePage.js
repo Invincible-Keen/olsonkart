@@ -42,7 +42,7 @@ class HomePage extends Component {
 		if(this.state.cart.has(product.name)){
 			let p = this.state.cart.get(product.name);
 			p.quantity++;
-			p.price += p.price;
+			p.price += product.price;
 
 
 			let currentCart = this.state.cart;
