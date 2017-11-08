@@ -64,6 +64,55 @@ class HomePage extends Component {
 		this._calculateTotalPrice();
 	}
 
+	handleDeleteShoppingItem(prodName){
+		if(this.state.cart.has(prodName)){
+			let cart = this.state.cart;
+			cart.delete(prodName);
+
+			this.setState({
+				cart: cart
+			});
+			
+		}
+
+		this._calculateTotalPrice();
+	}
+
+	handleAddQuantity(prodName){
+		if(this.state.cart.has(prodName)){
+			let p = this.state.cart.get(prodName);
+			p.price += p.price/p.quantity;
+			p.quantity++;
+
+			let currentCart = this.state.cart;
+			currentCart.set(prodName, p);
+			this.setState({
+				cart: currentCart
+			});
+			
+		}
+
+		this._calculateTotalPrice();
+	}
+
+	handleMinusQuantity(prodName){
+		if(this.state.cart.has(prodName)){
+			let p = this.state.cart.get(prodName);
+			if(p.quantity > 1){
+				p.price -= p.price/p.quantity;
+				p.quantity--;			
+
+				let currentCart = this.state.cart;
+				currentCart.set(prodName, p);
+				this.setState({
+					cart: currentCart
+				});
+			}
+		}
+
+		this._calculateTotalPrice();
+	}
+
 	componentWillMount() {
 		// console.log("componentWillMount");
 		this.setState({
@@ -116,7 +165,15 @@ class HomePage extends Component {
 				<Hero />
 				<Products products={this.state.products}  onAddToCart={this.handleAddToCart.bind(this)}/>
 				<Footer />
-				<ShoppingCart products={this.state.prodInCart} totalPrice={this.state.totalPrice} showModal={this.state.showModal} onShowHideModal={this.handleShowHideModal.bind(this)} />
+				<ShoppingCart 
+					products={this.state.prodInCart} 
+					totalPrice={this.state.totalPrice} 
+					showModal={this.state.showModal} 
+					onShowHideModal={this.handleShowHideModal.bind(this)}
+					onDeleteShoppingItem = {this.handleDeleteShoppingItem.bind(this)}
+					onAddQuantity = {this.handleAddQuantity.bind(this)}
+					onMinusQuantity = {this.handleMinusQuantity.bind(this)}
+				/>
 			</div>
 			);
 		}

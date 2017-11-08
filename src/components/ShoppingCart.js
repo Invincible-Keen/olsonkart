@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import ShoppingItem from './ShoppingItem'
 
 class ShoppingCart extends Component {
 	static propTypes = {
 		products: PropTypes.array,
 		totalPrice: PropTypes.number,
 		showModal: PropTypes.bool,
-		onShowHideModal: PropTypes.func
+		onShowHideModal: PropTypes.func,
+		onDeleteShoppingItem: PropTypes.func,
+		onAddQuantity: PropTypes.func,
+		onMinusQuantity: PropTypes.func
 	}
 
 	static defaultProps = {
@@ -32,6 +36,24 @@ class ShoppingCart extends Component {
 		}
 	}
 
+	handleDeleteItem(prodName){
+		if(this.props.onDeleteShoppingItem){
+			this.props.onDeleteShoppingItem(prodName);
+		}
+	}
+
+	handleAddQuantity(prodName){
+		if(this.props.onAddQuantity){
+			this.props.onAddQuantity(prodName);
+		}
+	}
+
+	handleMinusQuantity(prodName){
+		if(this.props.onMinusQuantity){
+			this.props.onMinusQuantity(prodName);
+		}
+	}
+
 	render() {
     	return (
       		<div className="modal" id="shoppingcart" onClick={this.handleModalClick.bind(this)} style={{'display': this.props.showModal? 'block' : 'none'}}>
@@ -46,19 +68,24 @@ class ShoppingCart extends Component {
 								<thead>
 									<tr>
 										<th>Name</th>
+										<th></th>
 										<th>Quantity</th>
+										<th></th>
 										<th>Price</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
 									{
 										this.props.products.map((p, i) => {
 											return(
-												<tr key={i}>
-													<td><a>{p.name}</a></td>
-													<td>{p.quantity}</td>
-													<td>${p.price}</td>
-												</tr>
+												<ShoppingItem 
+													key={i} 
+													product={p} 
+													onDeleteShoppingItem={this.handleDeleteItem.bind(this)} 
+													onAddQuantity = {this.handleAddQuantity.bind(this)}
+													onMinusQuantity = {this.handleMinusQuantity.bind(this)}
+												/>
 											);
 										})
 									}
@@ -66,7 +93,9 @@ class ShoppingCart extends Component {
 								<tfoot>
 									<tr>
 										<th></th>
+										<th></th>
 										<th>Total</th>
+										<th></th>
 										<th>￥{this.props.totalPrice.toString()}</th>
 									</tr>
 								</tfoot>

@@ -6,7 +6,8 @@ import '../node_modules/font-awesome/css/font-awesome.css'
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage'
 import registerServiceWorker from './registerServiceWorker';
-import { Route, BrowserRouter, Switch, HashRouter } from 'react-router-dom';
+// import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, HashRouter, Switch } from 'react-router-dom';
 
 
 //Brower history
