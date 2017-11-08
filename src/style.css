@@ -82,8 +82,8 @@ strong{
   max-width:1020px;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  /*padding-left: 15px;
+  padding-right: 15px;*/
   /*width:85%;*/
 }
 .color{ color:#16cbe6; }
